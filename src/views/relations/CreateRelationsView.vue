@@ -59,6 +59,7 @@
 import { ref } from "vue";
 import Breadcrumb from "../../partials/Breadcrumb.vue";
 import Relations from "../../models/relations.vue";
+import RelationType from "../../models/relationtype.vue";
 
 const relations = ref<Relations>({
   id: 0,

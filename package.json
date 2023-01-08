@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@types/node": "^18.11.18",
+    "apexcharts": "^3.36.3",
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
     "postcss": "^8",

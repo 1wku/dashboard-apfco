@@ -32,10 +32,14 @@
               </button>
             </div>
 
-            <div class="px-5 py-6 text-gray-700 bg-gray-200 border-b">
+            <div
+              class="px-5 py-6 text-gray-700 bg-gray-200 border-b"
+            >
               <label class="text-xs">Name</label>
 
-              <div class="relative mt-2 rounded-md shadow-sm">
+              <div
+                class="relative mt-2 rounded-md shadow-sm"
+              >
                 <span
                   class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-600"
                 >
@@ -61,7 +65,9 @@
               </div>
             </div>
 
-            <div class="flex items-center justify-between px-5 py-3">
+            <div
+              class="flex items-center justify-between px-5 py-3"
+            >
               <button
                 class="px-3 py-1 text-sm text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none"
               >
@@ -83,14 +89,20 @@
 
       <div class="mt-4">
         <div class="p-6 bg-white rounded-md shadow-md">
-          <h2 class="text-lg font-semibold text-gray-700 capitalize">
+          <h2
+            class="text-lg font-semibold text-gray-700 capitalize"
+          >
             Account settings
           </h2>
 
           <form @submit.prevent="register">
-            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+            <div
+              class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2"
+            >
               <div>
-                <label class="text-gray-700" for="username">Username</label>
+                <label class="text-gray-700" for="username"
+                  >Username</label
+                >
                 <input
                   class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="text"
@@ -99,7 +111,9 @@
               </div>
 
               <div>
-                <label class="text-gray-700" for="emailAddress"
+                <label
+                  class="text-gray-700"
+                  for="emailAddress"
                   >Email Address</label
                 >
                 <input
@@ -110,7 +124,9 @@
               </div>
 
               <div>
-                <label class="text-gray-700" for="password">Password</label>
+                <label class="text-gray-700" for="password"
+                  >Password</label
+                >
                 <input
                   class="w-full mt-2 border-gray-200 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
                   type="password"
@@ -119,7 +135,9 @@
               </div>
 
               <div>
-                <label class="text-gray-700" for="passwordConfirmation"
+                <label
+                  class="text-gray-700"
+                  for="passwordConfirmation"
                   >Password Confirmation</label
                 >
                 <input
@@ -145,25 +163,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import Breadcrumb from '../partials/Breadcrumb.vue'
+import { ref } from "vue";
 
 interface User {
-  username: string
-  email: string
-  password: string
-  confirm: string
+  username: string;
+  email: string;
+  password: string;
+  confirm: string;
 }
 
 const user = ref<User>({
-  username: '',
-  email: '',
-  password: '',
-  confirm: '',
-})
+  username: "",
+  email: "",
+  password: "",
+  confirm: "",
+});
 
 const register = () => {
-  const data = JSON.parse(JSON.stringify(user.value))
-  console.log('Registered: ', data)
-}
+  const data = JSON.parse(JSON.stringify(user.value));
+  console.log("Registered: ", data);
+};
 </script>

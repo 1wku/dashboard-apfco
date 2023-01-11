@@ -34,31 +34,17 @@
     >
       <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
-          <svg
-            class="w-8 h-8 ml-2 text-blue-500"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
-            ></path>
-          </svg>
-
-          <span class="mx-2 text-2xl font-semibold text-white">VueBoard</span>
+          <img src="http://new.apfco.com.vn/icons/Logo.png" alt="">
+          <span class="mx-2 text-2xl font-semibold text-white">APFCO Dashboard</span>
         </div>
       </div>
 
       <nav class="mt-10">
-        <p class="pl-4 text-xs font-semibold mb-4 text-gray-400">GENERAL</p>
+        <p class="pl-4 text-xs font-semibold mb-4 text-gray-400">Thông tin trang Sản phẩm</p>
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Dashboard' ? activeClass : inactiveClass]"
-          to="/dashboard"
+          :class="[$route.name === 'product' ? activeClass : inactiveClass]"
+          to="/product"
         >
           <svg
             class="w-5 h-5"
@@ -75,7 +61,7 @@
             ></path>
           </svg>
 
-          <span class="mx-4">Dashboard</span>
+          <span class="mx-4">Sản phẩm</span>
         </router-link>
         <p class="pl-4 my-2 text-xs font-semibold mb-4 text-gray-400">
           Examples

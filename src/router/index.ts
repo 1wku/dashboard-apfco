@@ -1,4 +1,8 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  RouteRecordRaw,
+} from "vue-router";
 import Dashboard from "../views/Dashboard.vue";
 import Forms from "../views/Forms.vue";
 import Tables from "../views/Tables.vue";
@@ -9,6 +13,9 @@ import Chart from "../views/ChartView.vue";
 import Card from "../views/CardView.vue";
 import Blank from "../views/BlankView.vue";
 import NotFound from "../views/NotFound.vue";
+import Product from "../views/Product/index.vue";
+import ProductNew from "../views/Product/new.vue";
+import ProductUpdate from "../views/Product/update.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,9 +25,19 @@ const routes: Array<RouteRecordRaw> = [
     meta: { layout: "empty" },
   },
   {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
+    path: "/product",
+    name: "product",
+    component: Product,
+  },
+  {
+    path: "/product/new",
+    name: "productnew",
+    component: ProductNew,
+  },
+  {
+    path: "/product/update/:id",
+    name: "productupdate",
+    component: ProductUpdate,
   },
   {
     path: "/forms",

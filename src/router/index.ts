@@ -16,6 +16,12 @@ import NotFound from "../views/NotFound.vue";
 import Product from "../views/Product/index.vue";
 import ProductNew from "../views/Product/new.vue";
 import ProductUpdate from "../views/Product/update.vue";
+import OpenInformation from "../views/relations/OpenInformationView.vue";
+import CreateRelations from "../views/relations/CreateRelationsView.vue";
+import ShareHolderManagement from "../views/relations/ShareHolderManagementView.vue";
+import AnnuallyAnnounce from "../views/relations/AnnuallyAnnounceView.vue";
+import MoneyAnnounce from "../views/relations/MoneyAnnounceView.vue";
+import CompanyManagement from "../views/relations/CompanyManagementView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -38,6 +44,44 @@ const routes: Array<RouteRecordRaw> = [
     path: "/product/update/:id",
     name: "productupdate",
     component: ProductUpdate,
+  },
+  {
+    path: "/quan-he/thong-tin-cong-bo",
+    name: "thong-tin-cong-bo",
+    component: OpenInformation,
+  },
+
+  {
+    path: "/quan-he/dai-hoi-co-dong",
+    name: "dai-hoi-co-dong",
+    component: ShareHolderManagement,
+  },
+
+  {
+    path: "/quan-he/bao-cao-tai-chinh",
+    name: "bao-cao-tai-chinh",
+    component: MoneyAnnounce,
+  },
+  {
+    path: "/quan-he/bao-cao-thuong-nien",
+    name: "bao-cao-thuong-nien",
+    component: AnnuallyAnnounce,
+  },
+  {
+    path: "/quan-he/quan-tri-cong-ty",
+    name: "quan-tri-cong-ty",
+    component: CompanyManagement,
+  },
+  {
+    path: "/quan-he/new",
+    name: "tao-moi-quan-he",
+    component: CreateRelations,
+  },
+
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
   },
   {
     path: "/forms",

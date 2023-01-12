@@ -9,21 +9,39 @@
     <!-- End Backdrop -->
 
     <div
-      :class="isOpen ? 'translate-x-0 ease-out' : '-translate-x-full ease-in'"
+      :class="
+        isOpen
+          ? 'translate-x-0 ease-out'
+          : '-translate-x-full ease-in'
+      "
       class="fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0"
     >
       <div class="flex items-center justify-center mt-8">
         <div class="flex items-center">
-          <img src="http://new.apfco.com.vn/icons/Logo.png" alt="">
-          <span class="mx-2 text-2xl font-semibold text-white">APFCO Dashboard</span>
+          <img
+            src="http://new.apfco.com.vn/icons/Logo.png"
+            alt=""
+          />
+          <span
+            class="mx-2 text-2xl font-semibold text-white"
+            >APFCO Dashboard</span
+          >
         </div>
       </div>
 
       <nav class="mt-10">
-        <p class="pl-4 text-xs font-semibold mb-4 text-gray-400">Thông tin trang Sản phẩm</p>
+        <p
+          class="pl-4 text-xs font-semibold mb-4 text-gray-400"
+        >
+          Thông tin trang Sản phẩm
+        </p>
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'product' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'product'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/product"
         >
           <svg
@@ -44,13 +62,19 @@
           <span class="mx-4">Sản phẩm</span>
         </router-link>
         <!-- Quan hệ  -->
-        <p class="pl-4 text-xs font-semibold mb-4 text-gray-400">Quan hệ</p>
+        <p
+          class="pl-4 text-xs font-semibold mb-4 text-gray-400"
+        >
+          Quan hệ
+        </p>
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
           :class="[
-            $route.name === 'thong-tin-cong-bo' ? activeClass : inactiveClass,
+            $route.name === 'thong-tin-cong-bo'
+              ? activeClass
+              : inactiveClass,
           ]"
-          to="/quan-he/thong-tin-cong-bo"
+          to="/quan-he/1"
         >
           <svg
             class="w-5 h-5"
@@ -72,9 +96,11 @@
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
           :class="[
-            $route.name === 'dai-hoi-co-dong' ? activeClass : inactiveClass,
+            $route.name === 'dai-hoi-co-dong'
+              ? activeClass
+              : inactiveClass,
           ]"
-          to="/quan-he/dai-hoi-co-dong"
+          to="/quan-he/2"
         >
           <svg
             class="w-5 h-5"
@@ -97,9 +123,11 @@
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
           :class="[
-            $route.name === 'bao-cao-tai-chinh' ? activeClass : inactiveClass,
+            $route.name === 'bao-cao-tai-chinh'
+              ? activeClass
+              : inactiveClass,
           ]"
-          to="/quan-he/bao-cao-tai-chinh"
+          to="/quan-he/3"
         >
           <svg
             class="w-5 h-5"
@@ -121,9 +149,11 @@
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
           :class="[
-            $route.name === 'bao-cao-thuong-nien' ? activeClass : inactiveClass,
+            $route.name === 'bao-cao-thuong-nien'
+              ? activeClass
+              : inactiveClass,
           ]"
-          to="/quan-he/bao-cao-thuong-nien"
+          to="/quan-he/4"
         >
           <svg
             class="w-5 h-5"
@@ -145,9 +175,11 @@
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
           :class="[
-            $route.name === 'quan-tri-cong-ty' ? activeClass : inactiveClass,
+            $route.name === 'quan-tri-cong-ty'
+              ? activeClass
+              : inactiveClass,
           ]"
-          to="/quan-he/quan-tri-cong-ty"
+          to="/quan-he/5"
         >
           <svg
             class="w-5 h-5"
@@ -168,13 +200,19 @@
         </router-link>
 
         <!--  -->
-        <p class="pl-4 my-2 text-xs font-semibold mb-4 text-gray-400">
+        <p
+          class="pl-4 my-2 text-xs font-semibold mb-4 text-gray-400"
+        >
           Examples
         </p>
 
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'UIElements' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'UIElements'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/ui-elements"
         >
           <svg
@@ -206,7 +244,11 @@
 
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Tables' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Tables'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/tables"
         >
           <svg
@@ -234,10 +276,18 @@
 
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Forms' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Forms'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/forms"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path
               d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
             />
@@ -253,7 +303,11 @@
 
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Cards' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Cards'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/cards"
         >
           <svg
@@ -262,7 +316,9 @@
             viewBox="0 0 20 20"
             fill="currentColor"
           >
-            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
+            <path
+              d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"
+            />
             <path
               fill-rule="evenodd"
               d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
@@ -275,7 +331,11 @@
 
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Modal' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Modal'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/modal"
         >
           <svg
@@ -299,7 +359,11 @@
         </router-link>
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Chart' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Chart'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/charts"
         >
           <svg
@@ -308,18 +372,30 @@
             viewBox="0 0 20 20"
             fill="currentColor"
           >
-            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
+            <path
+              d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"
+            />
+            <path
+              d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"
+            />
           </svg>
 
           <span class="mx-4">Charts</span>
         </router-link>
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Blank' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Blank'
+              ? activeClass
+              : inactiveClass,
+          ]"
           to="/blank"
         >
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+          <svg
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
             <path
               d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"
             />
@@ -327,11 +403,19 @@
 
           <span class="mx-4">Blank</span>
         </router-link>
-        <p class="pl-4 text-xs my-2 font-semibold mb-4 text-gray-400">About</p>
+        <p
+          class="pl-4 text-xs my-2 font-semibold mb-4 text-gray-400"
+        >
+          About
+        </p>
         <a
           target="_blank"
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
-          :class="[$route.name === 'Blank' ? activeClass : inactiveClass]"
+          :class="[
+            $route.name === 'Blank'
+              ? activeClass
+              : inactiveClass,
+          ]"
           href="https://github.com/tal7aouy"
         >
           <svg

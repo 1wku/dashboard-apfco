@@ -46,34 +46,34 @@ const routes: Array<RouteRecordRaw> = [
     component: ProductUpdate,
   },
   {
-    path: "/quan-he/thong-tin-cong-bo",
+    path: "/quan-he/1",
     name: "thong-tin-cong-bo",
     component: OpenInformation,
   },
 
   {
-    path: "/quan-he/dai-hoi-co-dong",
+    path: "/quan-he/2",
     name: "dai-hoi-co-dong",
     component: ShareHolderManagement,
   },
 
   {
-    path: "/quan-he/bao-cao-tai-chinh",
+    path: "/quan-he/3",
     name: "bao-cao-tai-chinh",
     component: MoneyAnnounce,
   },
   {
-    path: "/quan-he/bao-cao-thuong-nien",
+    path: "/quan-he/4",
     name: "bao-cao-thuong-nien",
     component: AnnuallyAnnounce,
   },
   {
-    path: "/quan-he/quan-tri-cong-ty",
+    path: "/quan-he/5",
     name: "quan-tri-cong-ty",
     component: CompanyManagement,
   },
   {
-    path: "/quan-he/new",
+    path: "/quan-he/new/:type",
     name: "tao-moi-quan-he",
     component: CreateRelations,
   },

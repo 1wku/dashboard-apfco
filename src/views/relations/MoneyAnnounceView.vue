@@ -1,121 +1,163 @@
 <template>
   <div>
-    <Breadcrumb breadcrumb="bao-cao-tai-chinh" />
-    <!--Banner get you to github repo-->
-
     <div class="mt-8"></div>
-    <router-link to="/quan-he/new">
+    <router-link to="/quan-he/new/3">
       <button
         class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
       >
         Tạo mới
       </button>
     </router-link>
-
-    <div class="flex flex-col mt-8">
-      <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+    <div v-if="loading">
+      <h1>Loading</h1>
+    </div>
+    <template v-else>
+      <div class="flex flex-col mt-8">
         <div
-          class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
+          class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
         >
-          <table class="min-w-full">
-            <thead>
-              <tr>
-                <th
-                  class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                >
-                  Tựa đề
-                </th>
+          <div
+            class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
+          >
+            <table class="min-w-full">
+              <thead>
+                <tr>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+                  >
+                    Tựa đề
+                  </th>
 
-                <th
-                  class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
-                >
-                  Đường dẫn
-                </th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50">
-                  Thao tác khác
-                </th>
-              </tr>
-            </thead>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+                  >
+                    Đường dẫn
+                  </th>
+                  <th
+                    class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
+                  >
+                    Ngày áp dụng
+                  </th>
+                  <th
+                    class="px-6 py-3 border-b border-gray-200 bg-gray-50"
+                  >
+                    Thao tác khác
+                  </th>
+                </tr>
+              </thead>
 
-            <tbody class="bg-white">
-              <tr v-for="(u, index) in users" :key="index">
-                <td
-                  class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
+              <tbody class="bg-white">
+                <tr
+                  v-for="(u, index) in result.docs"
+                  :key="index"
                 >
-                  <div class="text-sm leading-5 text-gray-900">
-                    {{ u.title }}
-                  </div>
-                  <div class="text-sm leading-5 text-gray-500">
-                    {{ u.title2 }}
-                  </div>
-                </td>
+                  <td
+                    class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <div
+                      class="text-sm leading-5 text-gray-900"
+                    >
+                      {{ u.title }}
+                    </div>
+                  </td>
 
-                <td
-                  class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
-                >
-                  {{ u.url }}
-                </td>
+                  <td
+                    class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <a :href="u.link"> {{ u.link }}</a>
+                  </td>
 
-                <td
-                  class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
-                >
-                  <div class="flex justify-around">
-                    <span class="text-yellow-500 flex justify-center">
-                      <a href="#" class="mx-2 px-2 rounded-md"
-                        ><svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="h-5 w-5 text-green-700"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
-                          />
-                          <path
-                            fill-rule="evenodd"
-                            d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                      </a>
-                      <form method="POST">
-                        <button class="mx-2 px-2 rounded-md">
-                          <svg
+                  <td
+                    class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <div
+                      class="text-sm leading-5 text-gray-900"
+                    >
+                      {{ u.uploadDate }}
+                    </div>
+                  </td>
+
+                  <td
+                    class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <div class="flex justify-around">
+                      <span
+                        class="text-yellow-500 flex justify-center"
+                      >
+                        <a
+                          href="#"
+                          class="mx-2 px-2 rounded-md"
+                          ><svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-5 w-5 text-red-700"
+                            class="h-5 w-5 text-green-700"
                             viewBox="0 0 20 20"
                             fill="currentColor"
                           >
                             <path
+                              d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"
+                            />
+                            <path
                               fill-rule="evenodd"
-                              d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                              d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
                               clip-rule="evenodd"
                             />
                           </svg>
-                        </button>
-                      </form>
-                    </span>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                        </a>
+                        <form method="POST">
+                          <button
+                            class="mx-2 px-2 rounded-md"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="h-5 w-5 text-red-700"
+                              viewBox="0 0 20 20"
+                              fill="currentColor"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                                clip-rule="evenodd"
+                              />
+                            </svg>
+                          </button>
+                        </form>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
-import Breadcrumb from "../../partials/Breadcrumb.vue";
-import Relations from "../../models/relations.ts";
+import router from "@/router";
+import { useRoute } from "vue-router";
+import { useQuery } from "@vue/apollo-composable";
+import gql from "graphql-tag";
 
-const testRelation: Relations = {
-  id: 1,
-  title: "Cong bo giay chung nhanj",
-  url: "kfaskdjfaksjdfljkl",
-};
+const route = useRoute();
+const typeId = route.path.split("")[route.path.length - 1];
 
-const users = ref<Relations[]>([...Array(10).keys()].map(() => testRelation));
+const GET_PRODUCTS = gql`
+  query MyQuery($_eq1: String = "3") {
+    docs(
+      where: { type: { _eq: $_eq1 } }
+      order_by: { uploadDate: asc }
+    ) {
+      id
+      link
+      title
+      type
+      uploadDate
+    }
+  }
+`;
+
+const { result, loading } = useQuery(GET_PRODUCTS);
 </script>

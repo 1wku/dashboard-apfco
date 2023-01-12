@@ -9,7 +9,9 @@
           <div
             class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
           >
-            <div class="p-3 bg-indigo-600 bg-opacity-75 rounded-full">
+            <div
+              class="p-3 bg-indigo-600 bg-opacity-75 rounded-full"
+            >
               <svg
                 class="w-8 h-8 text-white"
                 viewBox="0 0 28 30"
@@ -44,17 +46,25 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">8,282</h4>
+              <h4
+                class="text-2xl font-semibold text-gray-700"
+              >
+                8,282
+              </h4>
               <div class="text-gray-500">New Users</div>
             </div>
           </div>
         </div>
 
-        <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
+        <div
+          class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 sm:mt-0"
+        >
           <div
             class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
           >
-            <div class="p-3 bg-blue-600 bg-opacity-75 rounded-full">
+            <div
+              class="p-3 bg-blue-600 bg-opacity-75 rounded-full"
+            >
               <svg
                 class="w-8 h-8 text-white"
                 viewBox="0 0 28 28"
@@ -77,17 +87,25 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">200,521</h4>
+              <h4
+                class="text-2xl font-semibold text-gray-700"
+              >
+                200,521
+              </h4>
               <div class="text-gray-500">Total Orders</div>
             </div>
           </div>
         </div>
 
-        <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
+        <div
+          class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0"
+        >
           <div
             class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
           >
-            <div class="p-3 bg-pink-600 bg-opacity-75 rounded-full">
+            <div
+              class="p-3 bg-pink-600 bg-opacity-75 rounded-full"
+            >
               <svg
                 class="w-8 h-8 text-white"
                 viewBox="0 0 28 28"
@@ -110,8 +128,14 @@
             </div>
 
             <div class="mx-5">
-              <h4 class="text-2xl font-semibold text-gray-700">215,542</h4>
-              <div class="text-gray-500">Available Products</div>
+              <h4
+                class="text-2xl font-semibold text-gray-700"
+              >
+                215,542
+              </h4>
+              <div class="text-gray-500">
+                Available Products
+              </div>
             </div>
           </div>
         </div>
@@ -121,86 +145,38 @@
     <div class="mt-8"></div>
 
     <div class="flex flex-col mt-8">
-      <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+      <div
+        class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8"
+      >
         <div
-          class="
-            inline-block
-            min-w-full
-            overflow-hidden
-            align-middle
-            border-b border-gray-200
-            shadow
-            sm:rounded-lg
-          "
+          class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg"
         >
           <table class="min-w-full">
             <thead>
               <tr>
                 <th
-                  class="
-                    px-6
-                    py-3
-                    text-xs
-                    font-medium
-                    leading-4
-                    tracking-wider
-                    text-left text-gray-500
-                    uppercase
-                    border-b border-gray-200
-                    bg-gray-50
-                  "
+                  class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                 >
                   Name
                 </th>
                 <th
-                  class="
-                    px-6
-                    py-3
-                    text-xs
-                    font-medium
-                    leading-4
-                    tracking-wider
-                    text-left text-gray-500
-                    uppercase
-                    border-b border-gray-200
-                    bg-gray-50
-                  "
+                  class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                 >
                   Title
                 </th>
                 <th
-                  class="
-                    px-6
-                    py-3
-                    text-xs
-                    font-medium
-                    leading-4
-                    tracking-wider
-                    text-left text-gray-500
-                    uppercase
-                    border-b border-gray-200
-                    bg-gray-50
-                  "
+                  class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                 >
                   Status
                 </th>
                 <th
-                  class="
-                    px-6
-                    py-3
-                    text-xs
-                    font-medium
-                    leading-4
-                    tracking-wider
-                    text-left text-gray-500
-                    uppercase
-                    border-b border-gray-200
-                    bg-gray-50
-                  "
+                  class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50"
                 >
                   Role
                 </th>
-                <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
+                <th
+                  class="px-6 py-3 border-b border-gray-200 bg-gray-50"
+                ></th>
               </tr>
             </thead>
 
@@ -219,10 +195,14 @@
                     </div>
 
                     <div class="ml-4">
-                      <div class="text-sm font-medium leading-5 text-gray-900">
+                      <div
+                        class="text-sm font-medium leading-5 text-gray-900"
+                      >
                         {{ u.name }}
                       </div>
-                      <div class="text-sm leading-5 text-gray-500">
+                      <div
+                        class="text-sm leading-5 text-gray-500"
+                      >
                         {{ u.email }}
                       </div>
                     </div>
@@ -232,11 +212,15 @@
                 <td
                   class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                 >
-                  <div class="text-sm leading-5 text-gray-900">
+                  <div
+                    class="text-sm leading-5 text-gray-900"
+                  >
                     {{ u.title }}
                   </div>
-                  <div class="text-sm leading-5 text-gray-500">
-                    {{ u.title2 }}
+                  <div
+                    class="text-sm leading-5 text-gray-500"
+                  >
+                    <a :href="u.link"> {{ u.link }}</a>
                   </div>
                 </td>
 
@@ -244,49 +228,27 @@
                   class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                 >
                   <span
-                    class="
-                      inline-flex
-                      px-2
-                      text-xs
-                      font-semibold
-                      leading-5
-                      text-green-800
-                      bg-green-100
-                      rounded-full
-                    "
+                    class="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
                     >{{ u.status }}</span
                   >
                 </td>
 
                 <td
-                  class="
-                    px-6
-                    py-4
-                    text-sm
-                    leading-5
-                    text-gray-500
-                    border-b border-gray-200
-                    whitespace-nowrap
-                  "
+                  class="px-6 py-4 text-sm leading-5 text-gray-500 border-b border-gray-200 whitespace-nowrap"
                 >
                   {{ u.role }}
                 </td>
 
                 <td
-                  class="
-                    px-6
-                    py-4
-                    text-sm
-                    font-medium
-                    leading-5
-                    text-right
-                    border-b border-gray-200
-                    whitespace-nowrap
-                  "
+                  class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                 >
                   <div class="flex justify-around">
-                    <span class="text-yellow-500 flex justify-center">
-                      <a href="#" class="mx-2 px-2 rounded-md"
+                    <span
+                      class="text-yellow-500 flex justify-center"
+                    >
+                      <a
+                        href="#"
+                        class="mx-2 px-2 rounded-md"
                         ><svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="h-5 w-5 text-green-700"
@@ -304,7 +266,9 @@
                         </svg>
                       </a>
                       <form method="POST">
-                        <button class="mx-2 px-2 rounded-md">
+                        <button
+                          class="mx-2 px-2 rounded-md"
+                        >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-5 w-5 text-red-700"
@@ -339,7 +303,7 @@ interface User {
   name: string;
   email: string;
   title: string;
-  title2: string;
+  link: string;
   status: string;
   role: string;
 }
@@ -348,10 +312,12 @@ const testUser: User = {
   name: "John Doe",
   email: "john@example.com",
   title: "Software Engineer",
-  title2: "Web dev",
+  link: "Web dev",
   status: "Active",
   role: "Owner",
 };
 
-const users = ref<User[]>([...Array(10).keys()].map(() => testUser));
+const users = ref<User[]>(
+  [...Array(10).keys()].map(() => testUser)
+);
 </script>

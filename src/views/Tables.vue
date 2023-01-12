@@ -7,7 +7,9 @@
       <h4 class="text-gray-600">Simple Table</h4>
 
       <div class="mt-6">
-        <div class="my-6 overflow-hidden bg-white rounded-md shadow">
+        <div
+          class="my-6 overflow-hidden bg-white rounded-md shadow"
+        >
           <table class="w-full text-left border-collapse">
             <thead class="border-b">
               <tr>
@@ -29,10 +31,14 @@
                 :key="index"
                 class="hover:bg-gray-200"
               >
-                <td class="px-6 py-4 text-lg text-gray-700 border-b">
+                <td
+                  class="px-6 py-4 text-lg text-gray-700 border-b"
+                >
                   {{ i.city }}
                 </td>
-                <td class="px-6 py-4 text-gray-500 border-b">
+                <td
+                  class="px-6 py-4 text-gray-500 border-b"
+                >
                   {{ i.totalOrders }}
                 </td>
               </tr>
@@ -46,7 +52,11 @@
       <h4 class="text-gray-600">Table with pagination</h4>
 
       <div class="mt-6">
-        <h2 class="text-xl font-semibold leading-tight text-gray-700">Users</h2>
+        <h2
+          class="text-xl font-semibold leading-tight text-gray-700"
+        >
+          Users
+        </h2>
 
         <div class="flex flex-col mt-3 sm:flex-row">
           <div class="flex">
@@ -100,7 +110,9 @@
           </div>
 
           <div class="relative block mt-2 sm:mt-0">
-            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+            <span
+              class="absolute inset-y-0 left-0 flex items-center pl-2"
+            >
               <svg
                 viewBox="0 0 24 24"
                 class="w-4 h-4 text-gray-500 fill-current"
@@ -118,7 +130,9 @@
           </div>
         </div>
 
-        <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+        <div
+          class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8"
+        >
           <div
             class="inline-block min-w-full overflow-hidden rounded-lg shadow"
           >
@@ -153,7 +167,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(u, index) in paginatedTableData" :key="index">
+                <tr
+                  v-for="(u, index) in paginatedTableData"
+                  :key="index"
+                >
                   <td
                     class="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
@@ -167,7 +184,9 @@
                       </div>
 
                       <div class="ml-3">
-                        <p class="text-gray-900 whitespace-nowrap">
+                        <p
+                          class="text-gray-900 whitespace-nowrap"
+                        >
                           {{ u.name }}
                         </p>
                       </div>
@@ -176,12 +195,18 @@
                   <td
                     class="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
-                    <p class="text-gray-900 whitespace-nowrap">{{ u.role }}</p>
+                    <p
+                      class="text-gray-900 whitespace-nowrap"
+                    >
+                      {{ u.role }}
+                    </p>
                   </td>
                   <td
                     class="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
-                    <p class="text-gray-900 whitespace-nowrap">
+                    <p
+                      class="text-gray-900 whitespace-nowrap"
+                    >
                       {{ u.created }}
                     </p>
                   </td>
@@ -195,15 +220,21 @@
                         aria-hidden
                         :class="`absolute inset-0 bg-${u.statusColor}-200 opacity-50 rounded-full`"
                       ></span>
-                      <span class="relative">{{ u.status }}</span>
+                      <span class="relative">{{
+                        u.status
+                      }}</span>
                     </span>
                   </td>
                   <td
                     class="px-5 py-5 text-sm bg-white border-b border-gray-200"
                   >
                     <div class="flex justify-around">
-                      <span class="text-yellow-500 flex justify-center">
-                        <a href="#" class="mx-2 px-2 rounded-md"
+                      <span
+                        class="text-yellow-500 flex justify-center"
+                      >
+                        <a
+                          href="#"
+                          class="mx-2 px-2 rounded-md"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-5 w-5 text-green-700"
@@ -221,7 +252,9 @@
                           </svg>
                         </a>
                         <form method="POST">
-                          <button class="mx-2 px-2 rounded-md">
+                          <button
+                            class="mx-2 px-2 rounded-md"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               class="h-5 w-5 text-red-700"
@@ -307,7 +340,10 @@
               </thead>
 
               <tbody class="bg-white">
-                <tr v-for="(u, index) in wideTableData" :key="index">
+                <tr
+                  v-for="(u, index) in wideTableData"
+                  :key="index"
+                >
                   <td
                     class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                   >
@@ -326,7 +362,9 @@
                         >
                           {{ u.name }}
                         </div>
-                        <div class="text-sm leading-5 text-gray-500">
+                        <div
+                          class="text-sm leading-5 text-gray-500"
+                        >
                           {{ u.email }}
                         </div>
                       </div>
@@ -336,11 +374,10 @@
                   <td
                     class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
                   >
-                    <div class="text-sm leading-5 text-gray-900">
+                    <div
+                      class="text-sm leading-5 text-gray-900"
+                    >
                       {{ u.title }}
-                    </div>
-                    <div class="text-sm leading-5 text-gray-500">
-                      {{ u.title2 }}
                     </div>
                   </td>
 
@@ -363,8 +400,12 @@
                     class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                   >
                     <div class="flex justify-around">
-                      <span class="text-yellow-500 flex justify-center">
-                        <a href="#" class="mx-2 px-2 rounded-md"
+                      <span
+                        class="text-yellow-500 flex justify-center"
+                      >
+                        <a
+                          href="#"
+                          class="mx-2 px-2 rounded-md"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"
                             class="h-5 w-5 text-green-700"
@@ -382,7 +423,9 @@
                           </svg>
                         </a>
                         <form method="POST">
-                          <button class="mx-2 px-2 rounded-md">
+                          <button
+                            class="mx-2 px-2 rounded-md"
+                          >
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               class="h-5 w-5 text-red-700"
@@ -411,7 +454,11 @@
 </template>
 
 <script setup lang="ts">
-import { useTableData } from '../hooks/useTableData'
-const { simpleTableData, paginatedTableData, wideTableData } = useTableData()
-import Breadcrumb from '../partials/Breadcrumb.vue'
+import { useTableData } from "../hooks/useTableData";
+const {
+  simpleTableData,
+  paginatedTableData,
+  wideTableData,
+} = useTableData();
+import Breadcrumb from "../partials/Breadcrumb.vue";
 </script>

@@ -52,8 +52,20 @@ import { useQuery } from "@vue/apollo-composable";
 import gql from "graphql-tag";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import axios from "axios";
+import {
+  GC_USER_ID,
+  GC_AUTH_TOKEN,
+} from "../constants/settings.ts";
+import { User } from "../models/user.ts";
 
 const router = useRouter();
+const user = ref<User>({
+  id: 0,
+  name: "",
+  password: "",
+});
+
 const username = ref("");
 const password = ref("");
 
@@ -76,14 +88,43 @@ const GET_USER = gql`
 
 function login() {
   console.log(username.value);
-  const { result, loading } = useQuery(GET_USER, {
-    name: username.value,
-    password: password.value,
-  });
-  console.log(result);
+
+  axios
+    .post(
+      `https://stirred-shiner-19.hasura.app/api/rest/login`,
+      {
+        name: username.value,
+        password: password.value,
+      },
+      {
+        headers: {
+          "content-type": "application/json",
+          "x-hasura-admin-secret":
+            "TKrjwyPC0UH3sfUFyNS64kCfLastnHcvTnA9NyF5TCjX27U5WNuzNxIeZopDrN0y",
+        },
+      }
+    )
+    .then((response) => {
+      if (response.data.user_aggregate.nodes.length != 0) {
+        localStorage.setItem(
+          GC_USER_ID,
+          response.data.user_aggregate.nodes[0].id
+        );
+
+        router.push("/dashboard");
+      } else {
+        alert(
+          "Thông tin đăng nhập chưa chính xác. Vui lòng thử lại!"
+        );
+      }
+    })
+    .catch((e) => {
+      console.log(e);
+    });
   // if (result.value.user_aggregate.nodes != null) {
   // }
-
-  // router.push("/dashboard");
 }
+// function saveUserData(id, token) {
+
+// }
 </script>

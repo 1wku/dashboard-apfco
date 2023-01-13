@@ -1,4 +1,4 @@
-interface Relations {
+export interface Relations {
   id: Number, 
   title: string;
   link: string;

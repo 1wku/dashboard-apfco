@@ -2,7 +2,8 @@
   <header
     class="flex justify-end items-center px-6 py-2 bg-white border-b-4 border-indigo-600"
   >
-    <router-link
+    <button
+      @click="logout"
       to="/"
       class="flex px-4 py-2 border rounded-md text-sm text-gray-700 hover:bg-indigo-600 hover:text-white"
     >
@@ -20,16 +21,23 @@
           d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
         />
       </svg>
-      Đăng xuất</router-link
-    >
+      Đăng xuất
+    </button>
   </header>
 </template>
 
 <script setup lang="ts">
+import { GC_USER_ID } from "@/constants/settings";
+import router from "@/router";
 import { ref } from "vue";
 import { useSidebar } from "../hooks/useSidebar";
 
 const dropdownOpen = ref(false);
 const { isOpen } = useSidebar();
 const notificationOpen = ref(false);
+
+const logout = () => {
+  localStorage.removeItem(GC_USER_ID);
+  router.push("/login");
+};
 </script>

@@ -31,6 +31,19 @@
                     placeholder="Nhập tên sản phẩm ở đây"
                     v-model="result.product.name"
                   />
+                  <div class="mb-8">
+                    <label
+                      class="text-gray-700"
+                      for="username"
+                      >Thứ tự</label
+                    >
+                    <input
+                      class="w-full mt-2 border-gray-700 border p-4 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+                      type="text"
+                      placeholder="Nhập tên sản phẩm ở đây"
+                      v-model="result.product.index"
+                    />
+                  </div>
                 </div>
                 <div class="mb-8">
                   <div
@@ -349,6 +362,7 @@ const GET_PRODUCTS = gql`
       id
       name
       table
+      index
     }
   }
 `;

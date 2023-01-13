@@ -3,4 +3,5 @@ interface Relations {
   title: string;
   link: string;
   uploadDate : string 
+  type: string 
 }

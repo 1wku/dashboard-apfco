@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
       <Breadcrumb breadcrumb="tao-moi" />
 
-      <router-link to="/quan-he/thong-tin-cong-bo">
+      <router-link :to="`/quan-he/${route.params.type}`">
         <button
           class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
         >
@@ -20,7 +20,7 @@
         <h2
           class="text-lg font-semibold text-gray-700 capitalize"
         >
-          Chỉnh sửa dữ liệu
+          Chỉnh sửa dữ liệu [ {{ relationsLabel() }}]
         </h2>
 
         <form @submit.prevent="updateInfo">
@@ -115,14 +115,16 @@ const GET_INFO = gql`
   }
 `;
 const UPDATE_INFO = gql`
-  mutation MyMutation {
-    update_docs_by_pk(pk_columns: { id: ${route.params.id}}) {
-      title
-      link
-      type
-      uploadDate
-    }
+  mutation MyMutation($uploadDate: date = "", $type: String = "", $title: String = "", $link: String = "") {
+  update_docs_by_pk(pk_columns: {id: ${route.params.id}}, _set: {link: $link, title: $title, type: $type, uploadDate: $uploadDate}) {
+    id
+    title
+    link
+    type
+    uploadDate
   }
+}
+
 `;
 
 //// get data
@@ -130,15 +132,19 @@ const { result, loading, onResult } = useQuery(GET_INFO, {
   id: route.params.id,
 });
 
-onResult(() => {
-  if (result.value.docs_by_pk) {
-    relations.value = result.value.docs_by_pk;
-  }
-});
-
-////// update data
 const { mutate: update_info, error } =
   useMutation(UPDATE_INFO);
+
+onResult(() => {
+  if (result.value.docs_by_pk) {
+    relations.value.link = result.value.docs_by_pk.link;
+    relations.value.type = result.value.docs_by_pk.type;
+    relations.value.id = result.value.docs_by_pk.id;
+    relations.value.title = result.value.docs_by_pk.title;
+    relations.value.uploadDate =
+      result.value.docs_by_pk.uploadDate;
+  }
+});
 
 const updateInfo = () => {
   console.log("oke");
@@ -146,6 +152,7 @@ const updateInfo = () => {
     (relations.value.title !== "",
     relations.value.link !== "")
   ) {
+    console.log(relations.value);
     const data = JSON.parse(
       JSON.stringify(relations.value)
     );
@@ -154,9 +161,26 @@ const updateInfo = () => {
     update_info(data);
     alert("Cập nhập dữ liệu thành công");
     router.push("/quan-he/" + route.params.type);
-    console.log(error);
+    location.reload();
   } else {
     alert("Vui lòng nhập tên tài liệu và đường dẫn");
   }
 };
+
+function relationsLabel() {
+  switch (route.params.type) {
+    case "1":
+      return "Thông Tin Công Bố";
+    case "2":
+      return "Đại hội cổ đông ";
+    case "3":
+      return "Báo cáo tài chính";
+    case "4":
+      return "Báo cáo thường niên";
+    case "5":
+      return "Quản trị công ty";
+    default:
+      return "";
+  }
+}
 </script>

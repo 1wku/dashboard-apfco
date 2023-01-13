@@ -3,7 +3,7 @@
     <div class="flex justify-between items-center">
       <Breadcrumb breadcrumb="tao-moi" />
 
-      <router-link to="/quan-he/thong-tin-cong-bo">
+      <router-link :to="`/quan-he/${route.params.type}`">
         <button
           class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
         >
@@ -20,7 +20,7 @@
         <h2
           class="text-lg font-semibold text-gray-700 capitalize"
         >
-          Thêm mới dữ liệu
+          Thêm mới dữ liệu [ {{ relationsLabel() }}]
         </h2>
 
         <form @submit.prevent="addRelations">
@@ -136,7 +136,7 @@ const register = () => {
   console.log("oke");
   if (
     (relations.value.title !== "",
-    relations.value.url !== "")
+    relations.value.link !== "")
   ) {
     const data = JSON.parse(
       JSON.stringify(relations.value)
@@ -154,4 +154,21 @@ const addRelations = () => {
   const data = JSON.parse(JSON.stringify(relations.value));
   console.log("Relations: ", relations);
 };
+
+function relationsLabel() {
+  switch (route.params.type) {
+    case "1":
+      return "Thông Tin Công Bố";
+    case "2":
+      return "Đại hội cổ đông ";
+    case "3":
+      return "Báo cáo tài chính";
+    case "4":
+      return "Báo cáo thường niên";
+    case "5":
+      return "Quản trị công ty";
+    default:
+      return "";
+  }
+}
 </script>

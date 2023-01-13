@@ -9,7 +9,8 @@
       </button>
     </router-link>
     <div v-if="loading">
-      <h1>Loading</h1>
+      <h1>Đang tải</h1>
+      <!-- here -->
     </div>
     <template v-else>
       <div class="flex flex-col mt-8">
@@ -67,14 +68,25 @@
                     <a :href="u.link"> {{ u.link }}</a>
                   </td>
                   <td
+                    class="px-6 py-4 border-b border-gray-200 whitespace-nowrap"
+                  >
+                    <div
+                      class="text-sm leading-5 text-gray-900"
+                    >
+                      {{ u.uploadDate }}
+                    </div>
+                  </td>
+                  <td
                     class="px-6 py-4 text-sm font-medium leading-5 text-right border-b border-gray-200 whitespace-nowrap"
                   >
                     <div class="flex justify-around">
                       <span
                         class="text-yellow-500 flex justify-center"
                       >
-                        <a
-                          href="#"
+                        <router-link
+                          :to="`/quan-he/${4}/cap-nhap/${
+                            u.id
+                          }`"
                           class="mx-2 px-2 rounded-md"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +103,7 @@
                               clip-rule="evenodd"
                             />
                           </svg>
-                        </a>
+                        </router-link>
                         <form method="POST">
                           <button
                             class="mx-2 px-2 rounded-md"
@@ -134,7 +146,7 @@ const route = useRoute();
 const typeId = route.path.split("")[route.path.length - 1];
 
 const GET_PRODUCTS = gql`
-  query MyQuery($_eq1: String = "5") {
+  query MyQuery($_eq1: String = "4") {
     docs(
       where: { type: { _eq: $_eq1 } }
       order_by: { uploadDate: asc }

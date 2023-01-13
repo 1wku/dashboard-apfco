@@ -9,7 +9,7 @@
       </button>
     </router-link>
     <div v-if="loading">
-      <h1>Loading</h1>
+      <h1>Đang tải</h1>
     </div>
     <template v-else>
       <div class="flex flex-col mt-8">

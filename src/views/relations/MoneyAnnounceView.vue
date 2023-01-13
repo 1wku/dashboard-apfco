@@ -9,7 +9,7 @@
       </button>
     </router-link>
     <div v-if="loading">
-      <h1>Loading</h1>
+      <h1>Đang tải</h1>
     </div>
     <template v-else>
       <div class="flex flex-col mt-8">
@@ -84,8 +84,10 @@
                       <span
                         class="text-yellow-500 flex justify-center"
                       >
-                        <a
-                          href="#"
+                        <router-link
+                          :to="`/quan-he/${3}/cap-nhap/${
+                            u.id
+                          }`"
                           class="mx-2 px-2 rounded-md"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -102,7 +104,7 @@
                               clip-rule="evenodd"
                             />
                           </svg>
-                        </a>
+                        </router-link>
                         <form method="POST">
                           <button
                             class="mx-2 px-2 rounded-md"

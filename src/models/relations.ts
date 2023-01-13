@@ -1,6 +1,6 @@
 interface Relations {
   id: Number, 
   title: string;
-  url: string;
-  
+  link: string;
+  uploadDate : string 
 }

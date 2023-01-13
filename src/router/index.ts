@@ -22,6 +22,7 @@ import ShareHolderManagement from "../views/relations/ShareHolderManagementView.
 import AnnuallyAnnounce from "../views/relations/AnnuallyAnnounceView.vue";
 import MoneyAnnounce from "../views/relations/MoneyAnnounceView.vue";
 import CompanyManagement from "../views/relations/CompanyManagementView.vue";
+import UpdateRelationsView from "../views/relations/UpdateRelationsView.vue"; 
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -76,6 +77,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/quan-he/new/:type",
     name: "tao-moi-quan-he",
     component: CreateRelations,
+  },
+  {
+    path: "/quan-he/:type/cap-nhap/:id",
+    name: "cap-nhap-thong-tin",
+    component: UpdateRelationsView,
   },
 
   {

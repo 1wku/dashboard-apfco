@@ -163,15 +163,16 @@ const GET_PRODUCTS = gql`
   }
 `;
 const REMOVE_PRODUCT = gql`
-  mutation MyMutation($id: Int = -1) {
+  mutation MyMutation($id: Int = 999) {
     delete_product_by_pk(id: $id) {
       id
     }
   }
 `;
+
 const { mutate } = useMutation(REMOVE_PRODUCT);
 
-const { result, loading } = useQuery(GET_PRODUCTS) as any;
+const { result, loading } = useQuery(GET_PRODUCTS);
 
 function refresh() {
   router.go(0);
@@ -182,8 +183,10 @@ function deleteProduct(id: any) {
     "Bạn chắc chắn muốn xóa sản phẩm"
   );
   if (answer) {
-    mutate({ id });
-    router.go(0);
+    console.log(mutate);
+    mutate({ id }).then(() => {
+      router.go(0);
+    });
   } else {
     //some code
   }

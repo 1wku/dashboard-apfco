@@ -42,7 +42,7 @@
               ? activeClass
               : inactiveClass,
           ]"
-          to="/product"
+          to="/admin/product"
         >
           <svg
             class="w-5 h-5"
@@ -74,7 +74,7 @@
               ? activeClass
               : inactiveClass,
           ]"
-          to="/quan-he/1"
+          to="/admin/quan-he/1"
         >
           <svg
             class="w-5 h-5"
@@ -100,7 +100,7 @@
               ? activeClass
               : inactiveClass,
           ]"
-          to="/quan-he/2"
+          to="/admin/quan-he/2"
         >
           <svg
             class="w-5 h-5"
@@ -127,7 +127,7 @@
               ? activeClass
               : inactiveClass,
           ]"
-          to="/quan-he/3"
+          to="/admin/quan-he/3"
         >
           <svg
             class="w-5 h-5"
@@ -153,7 +153,7 @@
               ? activeClass
               : inactiveClass,
           ]"
-          to="/quan-he/4"
+          to="/admin/quan-he/4"
         >
           <svg
             class="w-5 h-5"
@@ -179,7 +179,7 @@
               ? activeClass
               : inactiveClass,
           ]"
-          to="/quan-he/5"
+          to="/admin/quan-he/5"
         >
           <svg
             class="w-5 h-5"

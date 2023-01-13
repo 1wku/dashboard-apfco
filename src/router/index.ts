@@ -25,100 +25,100 @@ import CompanyManagement from "../views/relations/CompanyManagementView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/",
+    path: "/admin/",
     name: "Login",
     component: Login,
     meta: { layout: "empty" },
   },
   {
-    path: "/product",
+    path: "/admin/product",
     name: "product",
     component: Product,
   },
   {
-    path: "/product/new",
+    path: "/admin/product/new",
     name: "productnew",
     component: ProductNew,
   },
   {
-    path: "/product/update/:id",
+    path: "/admin/product/update/:id",
     name: "productupdate",
     component: ProductUpdate,
   },
   {
-    path: "/quan-he/1",
+    path: "/admin/quan-he/1",
     name: "thong-tin-cong-bo",
     component: OpenInformation,
   },
 
   {
-    path: "/quan-he/2",
+    path: "/admin/quan-he/2",
     name: "dai-hoi-co-dong",
     component: ShareHolderManagement,
   },
 
   {
-    path: "/quan-he/3",
+    path: "/admin/quan-he/3",
     name: "bao-cao-tai-chinh",
     component: MoneyAnnounce,
   },
   {
-    path: "/quan-he/4",
+    path: "/admin/quan-he/4",
     name: "bao-cao-thuong-nien",
     component: AnnuallyAnnounce,
   },
   {
-    path: "/quan-he/5",
+    path: "/admin/quan-he/5",
     name: "quan-tri-cong-ty",
     component: CompanyManagement,
   },
   {
-    path: "/quan-he/new/:type",
+    path: "/admin/quan-he/new/:type",
     name: "tao-moi-quan-he",
     component: CreateRelations,
   },
 
   {
-    path: "/dashboard",
+    path: "/admin/dashboard",
     name: "Dashboard",
     component: Dashboard,
   },
   {
-    path: "/forms",
+    path: "/admin/forms",
     name: "Forms",
     component: Forms,
   },
   {
-    path: "/cards",
+    path: "/admin/cards",
     name: "Cards",
     component: Card,
   },
   {
-    path: "/tables",
+    path: "/admin/tables",
     name: "Tables",
     component: Tables,
   },
   {
-    path: "/ui-elements",
+    path: "/admin/ui-elements",
     name: "UIElements",
     component: UIElements,
   },
   {
-    path: "/modal",
+    path: "/admin/modal",
     name: "Modal",
     component: Modal,
   },
   {
-    path: "/charts",
+    path: "/admin/charts",
     name: "Chart",
     component: Chart,
   },
   {
-    path: "/blank",
+    path: "/admin/blank",
     name: "Blank",
     component: Blank,
   },
-  { path: "/:pathMatch(.*)*", component: NotFound },
+  { path: "/admin/:pathMatch(.*)*", component: NotFound },
 ];
 
 const router = createRouter({

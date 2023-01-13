@@ -24,6 +24,19 @@
                   placeholder="Nhập tên sản phẩm ở đây"
                   v-model="product.name"
                 />
+                <div class="mb-8">
+                  <label
+                    class="text-gray-700"
+                    for="username"
+                    >Vị trí</label
+                  >
+                  <input
+                    class="w-full mt-2 border-gray-700 border p-4 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+                    type="text"
+                    placeholder="Nhập tên sản phẩm ở đây"
+                    v-model="product.index"
+                  />
+                </div>
               </div>
               <div class="mb-8">
                 <div
@@ -327,6 +340,7 @@ const INSERT_PRODUCT = gql`
     $chara: jsonb = ""
     $table: jsonb = ""
     $name: String = ""
+    $index: Int = -1
   ) {
     insert_product(
       objects: {
@@ -334,6 +348,7 @@ const INSERT_PRODUCT = gql`
         feature: $feature
         chara: $chara
         table: $table
+        index: $index
       }
     ) {
       returning {

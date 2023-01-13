@@ -24,7 +24,7 @@
           />
           <span
             class="mx-2 text-2xl font-semibold text-white"
-            >APFCO Dashboard</span
+            >APFCO</span
           >
         </div>
       </div>
@@ -65,7 +65,7 @@
         <p
           class="pl-4 text-xs font-semibold mb-4 text-gray-400"
         >
-          Quan hệ
+          Quan hệ cổ đông
         </p>
         <router-link
           class="flex items-center px-6 py-2 mt-4 duration-200 border-l-4"
@@ -200,7 +200,7 @@
         </router-link>
 
         <!--  -->
-        <p
+        <!-- <p
           class="pl-4 my-2 text-xs font-semibold mb-4 text-gray-400"
         >
           Examples
@@ -430,7 +430,7 @@
           </svg>
 
           <span class="mx-4">Github</span>
-        </a>
+        </a> -->
       </nav>
     </div>
   </div>

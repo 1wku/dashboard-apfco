@@ -1,7 +1,8 @@
 <template>
   <div>
     <div class="mt-8">
-      <h4 class="text-gray-600">Sản phẩm mới</h4>
+      {{ hasTable }}
+      <h4 class="text-gray-600">Cập nhập sản phẩm</h4>
       <template v-if="loading">
         <div class="mx-auto">
           <h1>Loading...</h1>
@@ -13,7 +14,7 @@
             <h2
               class="text-lg font-semibold text-gray-700 capitalize mb-8"
             >
-              Thông tin sản phẩm mới
+              Thông tin sản phẩm
             </h2>
 
             <form @submit.prevent="register">

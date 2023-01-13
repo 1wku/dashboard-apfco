@@ -1,6 +1,7 @@
-interface Relations {
+export interface Relations {
   id: Number, 
   title: string;
-  url: string;
-  
+  link: string;
+  uploadDate : string 
+  type: string 
 }

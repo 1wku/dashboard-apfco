@@ -20,10 +20,10 @@
         <h2
           class="text-lg font-semibold text-gray-700 capitalize"
         >
-          Thêm mới dữ liệu [ {{ relationsLabel() }}]
+          Chỉnh sửa dữ liệu [ {{ relationsLabel() }}]
         </h2>
 
-        <form @submit.prevent="addRelations">
+        <form @submit.prevent="updateInfo">
           <div class="grid grid-cols-1 gap-6 mt-4">
             <div>
               <label
@@ -54,7 +54,7 @@
               <label
                 class="text-gray-700"
                 for="emailAddress"
-                >Mã nguồn
+                >Ngày công bố
               </label>
               <input
                 class="w-full border mt-2 p-2 border-gray-200 rounded-md focus:border-green-600 focus:ring focus:ring-opacity-40 focus:ring-green-500"
@@ -67,7 +67,7 @@
         <div class="flex justify-end mt-4">
           <button
             class="px-4 py-2 text-gray-200 bg-gray-800 rounded-md hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-            @click="register"
+            @click="updateInfo"
           >
             Lưu
           </button>
@@ -82,41 +82,15 @@ import { ref } from "vue";
 import Breadcrumb from "../../partials/Breadcrumb.vue";
 import Relations from "../../models/relations.vue";
 import RelationType from "../../models/relationtype.vue";
-import { useMutation } from "@vue/apollo-composable";
+import {
+  useMutation,
+  useQuery,
+} from "@vue/apollo-composable";
 import gql from "graphql-tag";
 import router from "@/router";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-
-const INSERT_INFO = gql`
-  mutation MyMutation(
-    $id: Int = -1
-    $link: String = ""
-    $title: String = ""
-    $type: String = ""
-    $uploadDate: date = ""
-  ) {
-    insert_docs_one(
-      object: {
-        link: $link
-        title: $title
-        type: $type
-        uploadDate: $uploadDate
-      }
-    ) {
-      id
-    }
-  }
-`;
-
-const {
-  mutate: insert_info,
-  loading,
-  error,
-} = useMutation(INSERT_INFO);
-console.log(route.params.type);
-
 const today = new Date();
 
 const relations = ref<Relations>({
@@ -130,29 +104,67 @@ const relations = ref<Relations>({
     .join("-"),
 });
 
-console.log(relations.value.uploadDate);
+const GET_INFO = gql`
+  query MyQuery {
+    docs_by_pk(id: ${route.params.id}) {
+      link
+      title
+      type
+      uploadDate
+    }
+  }
+`;
+const UPDATE_INFO = gql`
+  mutation MyMutation($uploadDate: date = "", $type: String = "", $title: String = "", $link: String = "") {
+  update_docs_by_pk(pk_columns: {id: ${route.params.id}}, _set: {link: $link, title: $title, type: $type, uploadDate: $uploadDate}) {
+    id
+    title
+    link
+    type
+    uploadDate
+  }
+}
 
-const register = () => {
+`;
+
+//// get data
+const { result, loading, onResult } = useQuery(GET_INFO, {
+  id: route.params.id,
+});
+
+const { mutate: update_info, error } =
+  useMutation(UPDATE_INFO);
+
+onResult(() => {
+  if (result.value.docs_by_pk) {
+    relations.value.link = result.value.docs_by_pk.link;
+    relations.value.type = result.value.docs_by_pk.type;
+    relations.value.id = result.value.docs_by_pk.id;
+    relations.value.title = result.value.docs_by_pk.title;
+    relations.value.uploadDate =
+      result.value.docs_by_pk.uploadDate;
+  }
+});
+
+const updateInfo = () => {
   console.log("oke");
   if (
     (relations.value.title !== "",
     relations.value.link !== "")
   ) {
+    console.log(relations.value);
     const data = JSON.parse(
       JSON.stringify(relations.value)
     );
-    console.log(data);
-    insert_info(data);
-    alert("Thêm sản phẩm thành công");
+    //////////////////////////// khong updat edata
+    console.log(relations.value.title);
+    update_info(data);
+    alert("Cập nhập dữ liệu thành công");
     router.push("/quan-he/" + route.params.type);
+    location.reload();
   } else {
     alert("Vui lòng nhập tên tài liệu và đường dẫn");
   }
-};
-
-const addRelations = () => {
-  const data = JSON.parse(JSON.stringify(relations.value));
-  console.log("Relations: ", relations);
 };
 
 function relationsLabel() {

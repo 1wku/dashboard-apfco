@@ -22,10 +22,15 @@ import ShareHolderManagement from "../views/relations/ShareHolderManagementView.
 import AnnuallyAnnounce from "../views/relations/AnnuallyAnnounceView.vue";
 import MoneyAnnounce from "../views/relations/MoneyAnnounceView.vue";
 import CompanyManagement from "../views/relations/CompanyManagementView.vue";
+import UpdateRelationsView from "../views/relations/UpdateRelationsView.vue";
+import {
+  GC_USER_ID,
+  GC_AUTH_TOKEN,
+} from "../constants/settings";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/admin/",
+    path: "/login",
     name: "Login",
     component: Login,
     meta: { layout: "empty" },
@@ -77,6 +82,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "tao-moi-quan-he",
     component: CreateRelations,
   },
+  {
+    path: "/quan-he/:type/cap-nhap/:id",
+    name: "cap-nhap-thong-tin",
+    component: UpdateRelationsView,
+  },
 
   {
     path: "/admin/dashboard",
@@ -124,6 +134,15 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from) => {
+  if (!(to.name === "Login")) {
+    const id = localStorage.getItem(GC_USER_ID);
+    if (id) return true;
+    else router.push("/login");
+  }
+  return true;
 });
 
 export default router;

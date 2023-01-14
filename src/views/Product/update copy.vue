@@ -1,12 +1,6 @@
 <template>
   <div>
-    <div
-      v-if="uploading"
-      class="fixed top-0 left-0 bg-slate-400 opacity-70"
-      :style="{ width: '100vw', height: '100vh' }"
-    >
-      <h1>oie</h1>
-    </div>
+    <h1>{{ error }}</h1>
     <div class="mt-8">
       <h4 class="text-gray-600">Sản phẩm mới</h4>
 
@@ -38,7 +32,7 @@
                   >
                   <input
                     class="w-full mt-2 border-gray-700 border p-4 rounded-md focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
-                    type="number"
+                    type="text"
                     placeholder="Nhập tên sản phẩm ở đây"
                     v-model="product.index"
                   />
@@ -354,16 +348,14 @@
           </form>
         </div>
       </div>
-
       <div class="mt-8">
         <button
           class="w-full px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500"
-          @click="uploadPicture"
+          @click="register"
         >
-          Thêm Sản phẩm
+          Lưu chỉnh sửa
         </button>
       </div>
-      <img v-if="url" :src="url" />
     </div>
   </div>
 </template>
@@ -371,31 +363,12 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import gql from "graphql-tag";
-import { useMutation } from "@vue/apollo-composable";
-import router from "@/router";
 import {
-  useFirebaseStorage,
-  useStorageFile,
-} from "vuefire";
-import { ref as storageRef } from "firebase/storage";
-import { v4 as uuidv4 } from "uuid";
-
-const storage = useFirebaseStorage();
-
-const imageFbRef = storageRef(
-  storage,
-  `product/${uuidv4()}.jpg`
-);
-
-const {
-  url,
-  // gives you a percentage between 0 and 1 of the upload progress
-  uploadProgress,
-  uploadError,
-  // firebase upload task
-  uploadTask,
-  upload,
-} = useStorageFile(imageFbRef);
+  useMutation,
+  useQuery,
+} from "@vue/apollo-composable";
+import router from "@/router";
+import { useRoute } from "vue-router";
 
 const INSERT_PRODUCT = gql`
   mutation MyMutation(
@@ -424,11 +397,25 @@ const INSERT_PRODUCT = gql`
   }
 `;
 
-const {
-  mutate: insert_product,
-  loading,
-  error,
-} = useMutation(INSERT_PRODUCT);
+const { mutate: insert_product, error } =
+  useMutation(INSERT_PRODUCT);
+
+const route = useRoute();
+console.log(route.params);
+
+const GET_PRODUCT = gql`
+query MyQuery($id: Int = ${route.params.id}) {
+  product: product_by_pk(id: $id) {
+    chara
+    feature
+    img
+    index
+    name
+    table
+  }
+}`;
+
+const { result, loading } = useQuery(GET_PRODUCT);
 
 interface User {
   name: string;
@@ -505,46 +492,35 @@ const product = ref<User>({
 });
 
 //! Upload image
-const imageData = ref(null);
-
-const uploading = ref(false);
 
 function handlePreviewImage(e) {
   if (product.value.img.preview !== "")
     URL.revokeObjectURL(product.value.img.preview);
   const file = e.target.files[0];
   file.preview = URL.createObjectURL(file);
-  imageData.value = file;
   product.value.img = file.preview;
 }
 
-function uploadPicture() {
-  if (product.value.name !== "") {
-    const data = imageData.value;
-    uploading.value = true;
-    if (data) {
-      upload(data);
-    }
-  } else {
-    alert("Vui lòng nhập tên sản phẩm");
-  }
-}
+//! Upload image
 
-watch(url, () => {
-  if (url.value) register();
+watch(result, () => {
+  console.log(result.value.product);
+  product.value = result.value.product;
+  if (result.value.product.table) {
+    hasTable.value = true;
+  }
 });
 
 const register = () => {
   if (product.value.name !== "") {
-    product.value = { ...product.value, img: url.value };
     const formatedData = hasTable.value
       ? product.value
       : { ...product.value, table: null };
-
     const data = JSON.parse(JSON.stringify(formatedData));
     insert_product(data);
+    console.log(data);
     alert("Thêm sản phẩm thành công");
-    router.push("/admin/product");
+    router.push("/product");
   } else {
     alert("Vui lòng nhập tên sản phẩm");
   }

@@ -11,6 +11,11 @@ import {
 } from "@apollo/client/core";
 import App from "./App.vue";
 import router from "./router";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getFirestore } from "firebase/firestore";
+import { VueFire, VueFireAuth } from "vuefire";
+import { firebaseApp } from "./storeFireBase";
 
 const cache = new InMemoryCache();
 
@@ -41,4 +46,15 @@ const app = createApp({
 app.component("default-layout", DashboardLayout);
 app.component("empty-layout", EmptyLayout);
 
-app.use(router).use(VueApexCharts).mount("#app");
+app
+  .use(router)
+  .use(VueFire, {
+    // imported above but could also just be created here
+    firebaseApp,
+    modules: [
+      // we will see other modules later on
+      VueFireAuth(),
+    ],
+  })
+  .use(VueApexCharts)
+  .mount("#app");

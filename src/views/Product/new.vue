@@ -312,6 +312,39 @@
                 </div>
               </div>
             </div>
+            <div class="w-full mt-8">
+              <div
+                class="w-full flex justify-between items-center"
+              >
+                <label class="text-black-700" for="username"
+                  >Ảnh Sản Phẩm</label
+                >
+                <label
+                  for="inputImage"
+                  class="cursor-pointer w-fit px-4 py-2 text-sm text-center border border-gray-600 border-dashed rounded-md focus:outline-none hover:bg-gray-300"
+                >
+                  Tải ảnh lên
+                </label>
+              </div>
+              <div class="flex justify-center">
+                <input
+                  type="file"
+                  @change="handlePreviewImage"
+                  class="hidden"
+                  id="inputImage"
+                />
+                <label for="inputImage" class="">
+                  <img
+                    :src="
+                      product.img ||
+                      'https://dummyimage.com/400x400/dedede/fff'
+                    "
+                    alt=""
+                    class="w-96 h-96 object-cover"
+                  />
+                </label>
+              </div>
+            </div>
           </form>
         </div>
       </div>
@@ -340,6 +373,7 @@ const INSERT_PRODUCT = gql`
     $chara: jsonb = ""
     $table: jsonb = ""
     $name: String = ""
+    $img: String = ""
     $index: Int = -1
   ) {
     insert_product(
@@ -349,6 +383,7 @@ const INSERT_PRODUCT = gql`
         chara: $chara
         table: $table
         index: $index
+        img: $img
       }
     ) {
       returning {
@@ -370,6 +405,7 @@ interface User {
   chara: Array<string>;
   feature: Array<string>;
   table: Array<any>;
+  imageUrl: string;
 }
 
 const hasTable = ref(false);
@@ -378,6 +414,7 @@ const product = ref<User>({
   name: "",
   chara: [""],
   feature: [""],
+  img: "",
   table: [
     {
       name: "Tinh bột",
@@ -436,6 +473,18 @@ const product = ref<User>({
     },
   ],
 });
+
+//! Upload image
+
+function handlePreviewImage(e) {
+  if (product.value.img.preview !== "")
+    URL.revokeObjectURL(product.value.img.preview);
+  const file = e.target.files[0];
+  file.preview = URL.createObjectURL(file);
+  product.value.img = file.preview;
+}
+
+//! Upload image
 
 const register = () => {
   if (product.value.name !== "") {

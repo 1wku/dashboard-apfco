@@ -6,7 +6,7 @@
       <h1 class="text-2xl">Dánh sách sản phẩm</h1>
       <button
         class="w-52 px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500 cursor-pointer"
-        to="/product/new"
+        to="/admin/product/new"
         @click="refresh"
       >
         Làm mới trang
@@ -44,7 +44,7 @@
                   >
                     <router-link
                       class="w-52 px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500 cursor-pointer"
-                      to="/product/new"
+                      to="/admin/product/new"
                     >
                       Thêm Sản phẩm
                     </router-link>
@@ -92,7 +92,7 @@
                         class="text-yellow-500 flex justify-center"
                       >
                         <router-link
-                          :to="`/product/update/${u.id}`"
+                          :to="`/admin/product/update/${u.id}`"
                           class="mx-2 px-2 rounded-md"
                           ><svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -445,6 +445,7 @@ const product = ref<User>({
   chara: [""],
   feature: [""],
   img: "",
+  index: 1,
   table: [
     {
       name: "Tinh bột",
@@ -519,14 +520,20 @@ function handlePreviewImage(e) {
 }
 
 function uploadPicture() {
-  if (product.value.name !== "") {
+  if (
+    product.value.name !== "" &&
+    product.value.feature.length > 0 &&
+    product.value.chara.length > 0 &&
+    product.value.chara.length > 0 &&
+    product.value.img !== ""
+  ) {
     const data = imageData.value;
     uploading.value = true;
     if (data) {
       upload(data);
     }
   } else {
-    alert("Vui lòng nhập tên sản phẩm");
+    alert("Vui lòng nhập đầy đủ thông tin");
   }
 }
 
@@ -535,19 +542,16 @@ watch(url, () => {
 });
 
 const register = () => {
-  if (product.value.name !== "") {
-    product.value = { ...product.value, img: url.value };
-    const formatedData = hasTable.value
-      ? product.value
-      : { ...product.value, table: null };
+  product.value = { ...product.value, img: url.value };
+  const formatedData = hasTable.value
+    ? product.value
+    : { ...product.value, table: null };
 
-    const data = JSON.parse(JSON.stringify(formatedData));
-    insert_product(data);
-    alert("Thêm sản phẩm thành công");
-    router.push("/admin/product");
-  } else {
-    alert("Vui lòng nhập tên sản phẩm");
-  }
+  const data = JSON.parse(JSON.stringify(formatedData));
+  console.log(data);
+  insert_product(data);
+  alert("Thêm sản phẩm thành công");
+  router.push("/admin/product");
 };
 
 function addFeature(e: any) {

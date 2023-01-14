@@ -157,11 +157,9 @@ const updateInfo = () => {
       JSON.stringify(relations.value)
     );
     //////////////////////////// khong updat edata
-    console.log(relations.value.title);
     update_info(data);
     alert("Cập nhập dữ liệu thành công");
     router.push("/quan-he/" + route.params.type);
-    location.reload();
   } else {
     alert("Vui lòng nhập tên tài liệu và đường dẫn");
   }

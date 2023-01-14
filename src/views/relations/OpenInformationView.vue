@@ -1,13 +1,26 @@
 <template>
   <div>
-    <div class="mt-8"></div>
-    <router-link to="/quan-he/new/1">
-      <button
-        class="px-4 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-indigo-600 rounded-md hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500"
-      >
-        Tạo mới
-      </button>
-    </router-link>
+    <div
+      class="flex items-center justify-between flex-row mt-8"
+    >
+      <h1 class="text-2xl">Quản trị công ty</h1>
+      <div>
+        <button
+          class="w-52 px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500 cursor-pointer"
+          to="/admin/product/new"
+          @click="() => router.go(0)"
+        >
+          Làm mới trang
+        </button>
+        <router-link to="/quan-he/new/1">
+          <button
+            class="w-fit ml-3 px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500 cursor-pointer"
+          >
+            Tạo mới
+          </button>
+        </router-link>
+      </div>
+    </div>
     <div v-if="loading">
       <h1>Đang tải</h1>
     </div>

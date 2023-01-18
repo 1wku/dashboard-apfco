@@ -12,7 +12,7 @@
         >
           Làm mới trang
         </button>
-        <router-link to="/quan-he/new/4">
+        <router-link to="/admin/quan-he/new/4">
           <button
             class="w-fit ml-3 px-4 py-2 text-sm text-center text-white bg-indigo-600 rounded-md focus:outline-none hover:bg-indigo-500 cursor-pointer"
           >
